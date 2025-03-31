@@ -33,7 +33,7 @@ app.get("/railfence", (req, res) => {
   });
 });
 app.get("/hellman", (req, res) => {
-  const filePath = path.join(__dirname, "files", "HELLMAN.PY"); // Path to your file
+  const filePath = path.join(__dirname, "files", "HELLMAN.py"); // Path to your file
   res.download(filePath, "HELLMAN.PY", (err) => {
     if (err) {
       console.error("Error while sending the file:", err);
