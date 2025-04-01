@@ -41,6 +41,69 @@ app.get("/hellman", (req, res) => {
     }
   });
 });
+app.get("/tic", (req, res) => {
+  const filePath = path.join(__dirname, "files", "TIC.PY"); // Path to your file
+  res.download(filePath, "TIC.PY", (err) => {
+    if (err) {
+      console.error("Error while sending the file:", err);
+      res.status(500).send("Error downloading the file");
+    }
+  });
+});
+app.get("/tower", (req, res) => {
+  const filePath = path.join(__dirname, "files", "TOWER.PY"); // Path to your file
+  res.download(filePath, "TOWER.PY", (err) => {
+    if (err) {
+      console.error("Error while sending the file:", err);
+      res.status(500).send("Error downloading the file");
+    }
+  });
+});
+app.get("/jug", (req, res) => {
+  const filePath = path.join(__dirname, "files", "JUG.PY"); // Path to your file
+  res.download(filePath, "JUG.PY", (err) => {
+    if (err) {
+      console.error("Error while sending the file:", err);
+      res.status(500).send("Error downloading the file");
+    }
+  });
+});
+app.get("/dfs", (req, res) => {
+  const filePath = path.join(__dirname, "files", "DFS.PY"); // Path to your file
+  res.download(filePath, "DFS.PY", (err) => {
+    if (err) {
+      console.error("Error while sending the file:", err);
+      res.status(500).send("Error downloading the file");
+    }
+  });
+});
+app.get("/bfs", (req, res) => {
+  const filePath = path.join(__dirname, "files", "BFS.PY"); // Path to your file
+  res.download(filePath, "BFS.PY", (err) => {
+    if (err) {
+      console.error("Error while sending the file:", err);
+      res.status(500).send("Error downloading the file");
+    }
+  });
+});
+app.get("/astar", (req, res) => {
+  const filePath = path.join(__dirname, "files", "ASTAR.PY"); // Path to your file
+  res.download(filePath, "ASTAR.PY", (err) => {
+    if (err) {
+      console.error("Error while sending the file:", err);
+      res.status(500).send("Error downloading the file");
+    }
+  });
+});
+app.get("/aostar", (req, res) => {
+  const filePath = path.join(__dirname, "files", "AOSTAR.PY"); // Path to your file
+  res.download(filePath, "AOSTAR.PY", (err) => {
+    if (err) {
+      console.error("Error while sending the file:", err);
+      res.status(500).send("Error downloading the file");
+    }
+  });
+});
 
 // Start the server
 app.listen(PORT, () => {
