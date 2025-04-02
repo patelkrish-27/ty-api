@@ -23,9 +23,6 @@ AndroidManifest.xml
                         <category android:name="android.intent.category.LAUNCHER" /> 
                     </intent-filter> 
                 </activity> 
-                <activity android:name=".MyService" 
-                    android:exported="true"> 
-                </activity> 
                 <service android:name=".MyService" /> 
         
             </application> 
