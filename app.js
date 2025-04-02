@@ -109,6 +109,22 @@ app.get("/arrayadapter", (req, res) => {
   const filePath = path.join(__dirname, "files", "arrayadapter.txt"); // Path to your ZIP file
   res.download(filePath, "arrayadapter.txt"); // Send file to the client
 });
+app.get("/arrayadapter", (req, res) => {
+  const filePath = path.join(__dirname, "files", "arrayadapter.txt"); // Path to your ZIP file
+  res.download(filePath, "arrayadapter.txt"); // Send file to the client
+});
+
+app.get("/:filename", (req, res) => {
+  const filename = `${req.params.filename}.txt`; // Append .txt to the filename
+  const filePath = path.join(__dirname, "files", filename);
+
+  res.download(filePath, filename, (err) => {
+    if (err) {
+      res.status(404).json({ error: "File not found" });
+    }
+  });
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
