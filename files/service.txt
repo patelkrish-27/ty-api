@@ -179,7 +179,7 @@ MainActivity.java
                 IntentFilter filter = new IntentFilter(); 
                 filter.addAction("RINGTONE_PLAYING"); 
                 filter.addAction("RINGTONE_STOPPED"); 
-                registerReceiver(ringtoneReceiver, filter); 
+                registerReceiver(ringtoneReceiver, filter,RECEIVER_NOT_EXPORTED);
             }
              @Override
             protected void onPause() {
