@@ -105,6 +105,10 @@ app.get("/aostar", (req, res) => {
   });
 });
 
+app.get("/adapter", (req, res) => {
+  const filePath = path.join(__dirname, "files", "src.zip"); // Path to your ZIP file
+  res.download(filePath, "src.zip"); // Send file to the client
+});
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
