@@ -1,0 +1,171 @@
+MainActivity.java
+
+        package com.example.practical3;
+
+        import android.os.Bundle;
+        import android.view.View;
+        import android.widget.Button;
+        import android.widget.DatePicker;
+        import android.widget.EditText;
+        import android.widget.RadioButton;
+        import android.widget.TextView;
+
+        import androidx.activity.EdgeToEdge;
+        import androidx.appcompat.app.AppCompatActivity;
+        import androidx.core.graphics.Insets;
+        import androidx.core.view.ViewCompat;
+        import androidx.core.view.WindowInsetsCompat;
+
+        public class MainActivity extends AppCompatActivity {
+
+            EditText uname;
+            EditText pass;
+            EditText age;
+            EditText add;
+            RadioButton male;
+            RadioButton female;
+
+            DatePicker bd;
+            Button submit;
+            TextView tw;
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                EdgeToEdge.enable(this);
+                setContentView(R.layout.activity_main);
+                ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+                    Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                    v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+                    return insets;
+                });
+
+                uname = findViewById(R.id.etUserName);
+                pass = findViewById(R.id.etPassword);
+                add  = findViewById(R.id.etAddress);
+                male = findViewById(R.id.rbMale);
+                female = findViewById(R.id.rbFemale);
+                age = findViewById(R.id.etAge);
+                bd  = findViewById(R.id.datePicker);
+                submit = findViewById(R.id.btnSubmit);
+                tw = findViewById(R.id.tvResult);
+
+
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String gender =  male.isChecked()?"Male":"Female";
+                        tw.setText("name: "+uname.getText()+"\npassword: "+pass.getText()+"\nAddress: "+add.getText()+"\nGender: "+gender+"\nAge: "+age.getText()+"\nBirthDate: "+bd.getDayOfMonth() + "/" + (bd.getMonth() + 1) + "/" + bd.getYear());
+                        tw.setVisibility(View.VISIBLE);
+                    }
+                });
+            }
+        }
+
+activity_main.xml
+
+        <?xml version="1.0" encoding="utf-8"?>
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- User Name -->
+                    <EditText
+                        android:id="@+id/etUserName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter User Name"
+                        android:inputType="textPersonName" />
+
+                    <!-- Password -->
+                    <EditText
+                        android:id="@+id/etPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Password"
+                        android:inputType="textPassword" />
+
+                    <!-- Address -->
+                    <EditText
+                        android:id="@+id/etAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Address"
+                        android:inputType="textPostalAddress" />
+
+                    <!-- Gender Selection -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gender" />
+
+                    <RadioGroup
+                        android:id="@+id/rgGender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rbMale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Male" />
+
+                        <RadioButton
+                            android:id="@+id/rbFemale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Female" />
+                    </RadioGroup>
+
+                    <!-- Age -->
+
+                    <EditText
+                        android:id="@+id/etAge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Age"
+                        android:inputType="number" />
+
+                    <!-- Birth Date (Date Picker) -->
+
+                    <DatePicker
+                        android:id="@+id/datePicker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:datePickerMode="calendar" />
+
+                    <!-- Submit Button -->
+                    <Button
+                        android:id="@+id/btnSubmit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Submit" />
+
+                    <!-- Display Output Below Submit Button -->
+                    <TextView
+                        android:id="@+id/tvResult"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="18sp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+            </ScrollView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
