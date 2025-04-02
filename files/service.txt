@@ -181,3 +181,9 @@ MainActivity.java
                 filter.addAction("RINGTONE_STOPPED"); 
                 registerReceiver(ringtoneReceiver, filter); 
             }
+             @Override
+            protected void onPause() {
+            super.onPause();
+            unregisterReceiver(ringtoneReceiver);
+            }
+            }
