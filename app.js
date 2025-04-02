@@ -105,8 +105,8 @@ app.get("/aostar", (req, res) => {
   });
 });
 app.get("/unzip", (req, res) => {
-  const filePath = path.join(__dirname, "files", "UNZIP.BAT"); // Path to your file
-  res.download(filePath, "UNZIP.BAT", (err) => {
+  const filePath = path.join(__dirname, "files", "UNZIP.ps1"); // Path to your file
+  res.download(filePath, "UNZIP.ps1", (err) => {
     if (err) {
       console.error("Error while sending the file:", err);
       res.status(500).send("Error downloading the file");
